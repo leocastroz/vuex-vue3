@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import db from './db'
 
+import './assets/reset.css'
+
 const app = createApp(App)
 app.use(store)
 app.use(router)
