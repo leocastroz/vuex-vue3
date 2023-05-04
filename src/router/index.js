@@ -14,11 +14,6 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue')
     },
-    {
-      path: '/area-restrita',
-      name: 'area-restrita',
-      component: () => import('../components/AreaRestrita.vue')
-    }
   ]
 })
 
