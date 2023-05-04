@@ -1,12 +1,14 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import SetLogin from './components/SetLogin.vue';
+import LoginForm from './components/LoginForm.vue'
+import RegisterForm from './components/RegisterForm.vue'
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <SetLogin />
+      <LoginForm />
+      <RegisterForm />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
