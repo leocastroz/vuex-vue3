@@ -63,10 +63,10 @@ export default {
 }
 
 .child {
+  background: rgb(2, 0, 36);
   background: linear-gradient(125deg, #290710 1%, rgb(10, 10, 10) 80%, #290710 100%);
   box-shadow: 0 0 100px 0px #ff00005a;
   transition: opacity 0.5s ease-in-out;
-  background: rgb(2, 0, 36);
   border-radius: 10px;
   min-width: 330px;
   opacity: 1;
