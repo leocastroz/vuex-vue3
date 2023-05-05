@@ -9,12 +9,19 @@ db.version(1).stores(
 export default new Vuex.Store({
   state: {
     currentUser: null,
-    isLoggedIn: false
+    isLoggedIn: false,
+    userNotFound: false
   },
   mutations: {
     setCurrentUser(state, user) {
       state.currentUser = user
       state.isLoggedIn = !!user
+    },
+    setUserNotFound(state, value) {
+      state.userNotFound = value
+    },
+    clearUserNotFound(state) {
+      state.userNotFound = false
     }
   },
   actions: {
@@ -22,9 +29,13 @@ export default new Vuex.Store({
       const user = await db.users.get({ email, password })
       if (user) {
         commit('setCurrentUser', user)
+        commit('setUserNotFound', false)
         console.log('LOGADO')
       } else {
-        console.log('SEM USUÁRIO')
+        commit('setUserNotFound', true)
+        setTimeout(() => {
+          commit('clearUserNotFound')
+        }, 10000)
       }
     },
     async register({ commit }, { email, password }) {
@@ -43,4 +54,3 @@ export default new Vuex.Store({
     }
   }
 });
-
