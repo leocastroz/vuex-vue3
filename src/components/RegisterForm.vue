@@ -1,5 +1,8 @@
 <template>
-  <form @submit.prevent="register">
+  <form @submit.prevent="register" :class="{ 'loading': isLoading }">
+    <MinWallpaper/>
+    <h1>Register here</h1>
+    <p>I already have an account! <span @click="registerOk">  Sign in</span></p>
     <div class="email">
       <span class="material-symbols-rounded user">
         person
@@ -13,39 +16,83 @@
       <input type="password" name="password" v-model="password" placeholder="password">
     </div>
     <div>
-      <button type="submit">Register
+      <button type="submit" :disabled="!email || !password">Register now
         <span class="material-symbols-rounded arrow">
-          play_arrow
+          bolt
         </span>
       </button>
     </div>
   </form>
 </template>
 <script>
+import MinWallpaper from './MinWallpaper.vue'
 export default {
+  components: {
+    MinWallpaper
+  },
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      isLoading: true,
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1500)
   },
   methods: {
     register() {
-      this.$store.dispatch('register', { email: this.email, password: this.password });
+      this.$store.dispatch('register', { email: this.email, password: this.password })
+    },
+    registerOk() {
+      this.$emit('success')
     }
-  }
+  },
 };
 </script>
 <style scoped>
+
+form {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+form.loading {
+  opacity: 0;
+}
+
+form h1 {
+  text-align: center; 
+  font-style: italic; 
+  color: #9C9C9C;
+  font-weight: 400; 
+  font-size: 20px;
+  padding: 15px 0 5px 0; 
+}
+
 form div {
   justify-content: center;
   padding: 0 0px;
   display: flex;
-  margin-top: 30px;
 }
 
-form div .user,
-form div .pass {
+form p {
+  padding: 30px 0 30px 0;
+  color: #9C9C9C;
+  text-align: center;
+  font-size: 12px;
+}
+
+form p span {
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+  color: #9C9C9C;
+}
+
+form div .user, form div .pass {
   background-color: #FF0044;
   border-radius: 2px;
   padding: 5px 10px;
@@ -55,17 +102,21 @@ form div .pass {
 }
 
 form div input {
-  background-color: #272727;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(125deg, #000000 70%, #c6013525 100%);
   border-radius: 0 5px 5px 0;
   min-width: 200px;
   padding: 10px;
   border: none;
+  color: #fff;
+  outline: none;
 }
 
 form div button {
   border: 1px solid #FF0044;
-  background-color: #272727;
-  margin: 5px 0 30px 0;
+  background: rgb(2,0,36);
+  background: linear-gradient(125deg, #c60135ab 1%, #2b0c14 60%, #c601354a 100%);
+  margin: 30px 0 30px 0;
   align-items: center;
   padding: 10px 15px;
   border-radius: 5px;
@@ -85,12 +136,16 @@ form div .arrow {
 }
 
 form button:hover {
-  box-shadow: 0 0 10px 1px #fff;
   background-color: #FF0044;
   color: #fff;
+  box-shadow: 0 0 20px 1px #ff00449b;
+  transition: 300ms linear; 
 }
 
 form .password {
   margin-top: 25px;
 }
+
+
+
 </style>

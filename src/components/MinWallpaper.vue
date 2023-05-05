@@ -6,8 +6,8 @@
 
 div {
     width: 100%;
-    height: 150px;
-    background-image: url(../assets/min-wallpaper.svg);
+    height: 180px;
+    background-image: url('../assets/memojiWallpaper.svg');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -42,10 +42,10 @@ export default new Vuex.Store({
       const count = await db.users.where('email').equals(email).count()
       if (count === 0) {
         const user = await db.users.add({ email, password })
-        commit('setCurrentUser', { id: user, email });
-        console.log('registrado')
+        commit('setCurrentUser', { id: user, email })
+        console.log('VOCÊ FOI REGISTRADO')
       } else {
-        console.log('já registrado')
+        console.log('JÁ REGISTRADO')
       }
     },
     logout({ commit }) {

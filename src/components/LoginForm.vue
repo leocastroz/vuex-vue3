@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="login">
+  <form @submit.prevent="login" :class="{ 'loading': isLoading }">
+    <MinWallpaper/>
     <h1>Sign In</h1>
     <div class="email">
       <span class="material-symbols-rounded user">
@@ -22,28 +23,36 @@
       </div>
     </div>
     <div>
-      <button type="submit">LETS ' GO
+      <button type="submit" :disabled="!email || !password">LETS ' GO
         <span class="material-symbols-rounded arrow">
           ssid_chart
         </span>
       </button>
     </div>
-    <p>Don't have an account ?<a href="/register-form" @click="mostrar"> register now</a></p>
+    <p>Don't have an account ?<span @click="sendRoute">  register now</span></p>
+    <DevProfile />
   </form>
-  <DevProfile />
 </template>
 <script>
-import DevProfile from './DevProfile.vue';
+import MinWallpaper from './MinWallpaper.vue'
+import DevProfile from './DevProfile.vue'
 export default {
   components: {
     DevProfile,
+    MinWallpaper,
   },
   data() {
     return {
       email: '',
       password: '',
       minModal: false,
+      isLoading: true,
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isLoading = false
+    }, 1500)
   },
   computed: {
     userNotFound() {
@@ -61,20 +70,33 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch('login', { email: this.email, password: this.password });
+      this.$store.dispatch('login', { email: this.email, password: this.password })
     },
     openMinModal() {
-      console.log('leonardo')
+
       this.minModal = true
       setTimeout(() => {
         this.minModal = false
       }, 3000)
+    },
+    sendRoute() {
+      this.$emit('close')
     }
   }
 };
 </script>
 
 <style scoped>
+
+form {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+form.loading {
+  opacity: 0;
+}
+
 form h1 {
   text-align: center; 
   font-style: italic; 
@@ -146,7 +168,6 @@ form div .min-modal p {
 form div button {
   background: rgb(2,0,36);
   background: linear-gradient(125deg, #c60135ab 1%, #2b0c14 60%, #c601354a 100%);
-  background-color: #272727;
   align-items: center;
   padding: 10px 15px;
   border-radius: 5px;
@@ -181,9 +202,11 @@ form p {
   font-size: 12px;
 }
 
-form p a {
-  color: #9C9C9C;
+form p span {
+  text-decoration: underline;
   font-weight: bold;
+  cursor: pointer;
+  color: #9C9C9C;
 }
 
 
