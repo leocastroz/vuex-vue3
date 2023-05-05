@@ -73,7 +73,6 @@ export default {
       this.$store.dispatch('login', { email: this.email, password: this.password })
     },
     openMinModal() {
-
       this.minModal = true
       setTimeout(() => {
         this.minModal = false

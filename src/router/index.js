@@ -19,6 +19,11 @@ const router = createRouter({
       name: 'register-form',
       component: () => import('../components/RegisterForm.vue')
     },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue')
+    }
   ]
 })
 

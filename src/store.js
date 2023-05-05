@@ -1,10 +1,7 @@
 import Vuex from 'vuex'
-import Dexie from 'dexie'
+import db from './db.js'
+import router from '../src/router/index.js'
 
-const db = new Dexie('userDb')
-db.version(1).stores(
-    { users: '++id,email,password' }
-)
 
 export default new Vuex.Store({
   state: {
@@ -31,6 +28,7 @@ export default new Vuex.Store({
         commit('setCurrentUser', user)
         commit('setUserNotFound', false)
         console.log('LOGADO')
+        router.push('/dashboard')
       } else {
         commit('setUserNotFound', true)
         setTimeout(() => {
