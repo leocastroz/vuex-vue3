@@ -6,7 +6,7 @@
 
 div {
     width: 100%;
-    height: 120px;
+    height: 150px;
     background-image: url(../assets/min-wallpaper.svg);
     background-position: center center;
     background-size: cover;
