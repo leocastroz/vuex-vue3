@@ -2,7 +2,6 @@ import Vuex from 'vuex'
 import db from './db.js'
 import router from '../src/router/index.js'
 
-
 export default new Vuex.Store({
   state: {
     currentUser: null,
@@ -25,10 +24,15 @@ export default new Vuex.Store({
     async login({ commit }, { email, password }) {
       const user = await db.users.get({ email, password })
       if (user) {
-        commit('setCurrentUser', user)
         commit('setUserNotFound', false)
         console.log('LOGADO')
-        router.push('/dashboard')
+        console.log('user =>', user)
+        if (user !== '') {
+          router.push('/dashboard')
+          console.log('COM ALGO')
+        } else {
+          console.log('SEM ALGO')
+        }
       } else {
         commit('setUserNotFound', true)
         setTimeout(() => {
@@ -42,6 +46,7 @@ export default new Vuex.Store({
         const user = await db.users.add({ email, password })
         commit('setCurrentUser', { id: user, email })
         console.log('VOCÊ FOI REGISTRADO')
+        router.push('/about')
       } else {
         console.log('JÁ REGISTRADO')
       }

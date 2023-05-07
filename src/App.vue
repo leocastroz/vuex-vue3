@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import LoginForm from './components/LoginForm.vue'
 import RegisterForm from './components/RegisterForm.vue'
+import DashboardView from './views/DashboardView.vue'
 </script>
 <script>
 export default {
@@ -10,6 +11,7 @@ export default {
       isLoading: true,
       loginOpen: true,
       registerClose: false,
+      dashHide: false,
     }
   },
   mounted() {
@@ -35,7 +37,7 @@ export default {
   <header>
     <div class="container">
       <div class="child" :class="{ 'loading': isLoading }">
-        <LoginForm v-if="loginOpen" @close="onClose" />
+        <LoginForm v-if="loginOpen" @close="onClose" @loggedin="kekeu" />
         <RegisterForm v-if="registerClose" @success="onSuccess" />
         <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -44,7 +46,7 @@ export default {
       </div>
     </div>
   </header>
-
+  
   <RouterView />
 </template>
 

@@ -1,89 +1,89 @@
-<template>
-  <form @submit.prevent="login" :class="{ 'loading': isLoading }">
-    <MinWallpaper/>
-    <h1>Sign In</h1>
-    <div class="email">
-      <span class="material-symbols-rounded user">
-        person
-      </span>
-      <input type="email" name="email" v-model="email" placeholder="e-mail" required>
-    </div>
-    <div class="password">
-      <span class="material-symbols-rounded pass">
-        visibility
-      </span>
-      <input type="password" name="password" v-model="password" placeholder="password" required>
-      <div v-if="userNotFound" class="info" @click="openMinModal">
-        <span class="material-symbols-rounded info">
-          info
+  <template>
+    <form @submit.prevent="login" :class="{ 'loading': isLoading }">
+      <MinWallpaper/>
+      <h1>Sign In</h1>
+      <div class="email">
+        <span class="material-symbols-rounded user">
+          person
         </span>
+        <input type="email" name="email" v-model="email" placeholder="e-mail" required>
       </div>
-      <div class="min-modal" v-if="minModal">
-        <p>register a user</p>
-      </div>
-    </div>
-    <div>
-      <button type="submit" :disabled="!email || !password">LETS ' GO
-        <span class="material-symbols-rounded arrow">
-          ssid_chart
+      <div class="password">
+        <span class="material-symbols-rounded pass">
+          visibility
         </span>
-      </button>
-    </div>
-    <p>Don't have an account ?<span @click="sendRoute">  register now</span></p>
-    <DevProfile />
-  </form>
-</template>
-<script>
-import MinWallpaper from './MinWallpaper.vue'
-import DevProfile from './DevProfile.vue'
-export default {
-  components: {
-    DevProfile,
-    MinWallpaper,
-  },
-  data() {
-    return {
-      email: '',
-      password: '',
-      minModal: false,
-      isLoading: true,
-    };
-  },
-  mounted() {
-    setTimeout(() => {
-      this.isLoading = false
-    }, 1500)
-  },
-  computed: {
-    userNotFound() {
-      return this.$store.state.userNotFound
-    }
-  },
-  watch: {
-    userNotFound(newVal) {
-      if (newVal) {
+        <input type="password" name="password" v-model="password" placeholder="password" required>
+        <div v-if="userNotFound" class="info" @click="openMinModal">
+          <span class="material-symbols-rounded info">
+            info
+          </span>
+        </div>
+        <div class="min-modal" v-if="minModal">
+          <p>register a user</p>
+        </div>
+      </div>
+      <div>
+        <button type="submit" :disabled="!email || !password">LETS ' GO
+          <span class="material-symbols-rounded arrow">
+            ssid_chart
+          </span>
+        </button>
+      </div>
+      <p>Don't have an account ?<span @click="sendRoute">  register now</span></p>
+      <DevProfile />
+    </form>
+  </template>
+  <script>
+  import MinWallpaper from './MinWallpaper.vue'
+  import DevProfile from './DevProfile.vue'
+  export default {
+    components: {
+      DevProfile,
+      MinWallpaper,
+    },
+    data() {
+      return {
+        email: '',
+        password: '',
+        minModal: false,
+        isLoading: true,
+      };
+    },
+    mounted() {
+      setTimeout(() => {
+        this.isLoading = false
+      }, 1500)
+    },
+    computed: {
+      userNotFound() {
+        return this.$store.state.userNotFound
+      }
+    },
+    watch: {
+      userNotFound(newVal) {  
+        if (newVal) {
+          setTimeout(() => {
+            this.$store.commit('clearUserNotFound')
+          }, 6000)
+        }
+      }
+    },
+    methods: {
+      login() {
+        this.$store.dispatch('login', { email: this.email, password: this.password })
+      },
+      openMinModal() {
+        this.minModal = true
         setTimeout(() => {
-          this.$store.commit('clearUserNotFound')
-        }, 6000)
+          this.minModal = false
+        }, 3000)
+      },
+      sendRoute() {
+        this.$emit('close')
       }
     }
-  },
-  methods: {
-    login() {
-      this.$store.dispatch('login', { email: this.email, password: this.password })
-    },
-    openMinModal() {
-      this.minModal = true
-      setTimeout(() => {
-        this.minModal = false
-      }, 3000)
-    },
-    sendRoute() {
-      this.$emit('close')
-    }
-  }
-};
-</script>
+  };
+  </script>
 
 <style scoped>
 
