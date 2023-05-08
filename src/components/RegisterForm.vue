@@ -4,21 +4,21 @@
     <h1>Register here</h1>
     <p>I already have an account! <span @click="registerOk">  Sign in</span></p>
     <div class="email">
-      <span class="material-symbols-rounded user">
-        person
+      <span class="user">
+        <img src="../assets/person.svg" alt="person_icon">
       </span>
       <input type="email" name="email" v-model="email" placeholder="e-mail">
     </div>
     <div class="password">
-      <span class="material-symbols-rounded pass">
-        visibility
+      <span class="pass">
+        <img src="../assets/visibility.svg" alt="eye_icon">
       </span>
       <input type="password" name="password" v-model="password" placeholder="password">
     </div>
     <div>
       <button type="submit" :disabled="!email || !password">Register now
-        <span class="material-symbols-rounded arrow">
-          bolt
+        <span class="arrow">
+          <img src="../assets/bolt.svg" alt="">
         </span>
       </button>
     </div>
@@ -97,8 +97,11 @@ form div .user, form div .pass {
   border-radius: 2px;
   padding: 5px 10px;
   user-select: none;
-  font-size: 22px;
-  color: #fff;
+  display: flex;
+}
+
+form div .user img, form div .pass img  {
+  width: 25px;
 }
 
 form div input {
@@ -126,13 +129,17 @@ form div button {
   color: #fff;
   display: flex;
   border: none;
+  transition: 300ms linear; 
 }
 
 form div .arrow {
   margin-left: 10px;
   user-select: none;
-  color: #ffffff;
-  font-size: 16px;
+  display: flex;
+}
+
+form div .arrow img {
+  width: 20px;
 }
 
 form button:hover {

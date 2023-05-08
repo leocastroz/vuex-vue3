@@ -3,7 +3,7 @@
         <h4>Development by</h4>
         <div>
             <div>
-                <img src="https://avatars.githubusercontent.com/u/72839343?v=4" alt="person" width="60">
+                <img src="../assets/profile.jpg" alt="person" width="60">
             </div>
         </div>
     </div>
@@ -28,9 +28,10 @@ h4 {
 }
 
 .wr div img {
+    box-shadow: 0 0 40px 0px #ff004490;
     cursor: pointer;
     border-radius: 100%;
-    padding: 20px;
+    margin: 20px;
 }
 
 </style>

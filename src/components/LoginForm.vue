@@ -3,14 +3,14 @@
       <MinWallpaper/>
       <h1>Sign In</h1>
       <div class="email">
-        <span class="material-symbols-rounded user">
-          person
+        <span class="user">
+          <img src="../assets/person.svg" alt="">
         </span>
         <input type="email" name="email" v-model="email" placeholder="e-mail" required>
       </div>
       <div class="password">
-        <span class="material-symbols-rounded pass">
-          visibility
+        <span class="pass">
+          <img src="../assets/visibility.svg" alt="">
         </span>
         <input type="password" name="password" v-model="password" placeholder="password" required>
         <div v-if="userNotFound" class="info" @click="openMinModal">
@@ -24,8 +24,8 @@
       </div>
       <div>
         <button type="submit" :disabled="!email || !password">LETS ' GO
-          <span class="material-symbols-rounded arrow">
-            ssid_chart
+          <span class="arrow">
+            <img src="../assets/ssid_chart.svg" alt="">
           </span>
         </button>
       </div>
@@ -116,8 +116,10 @@ form div .user, form div .pass {
   border-radius: 2px;
   padding: 5px 10px;
   user-select: none;
-  font-size: 22px;
-  color: #fff;
+  display: flex;
+}
+form div .user img, form div .pass img {
+  width: 25px;
 }
 
 form div input {
@@ -183,8 +185,11 @@ form div button {
 form div .arrow {
   margin-left: 10px;
   user-select: none;
-  color: #ffffff;
-  font-size: 16px;
+  display: flex;
+}
+
+form div .arrow img {
+  width: 20px;
 }
 
 form button:hover {

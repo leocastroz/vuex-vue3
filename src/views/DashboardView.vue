@@ -14,8 +14,7 @@
         
         <section class="dev">
           <p>Under development</p>
-          <img src="https://raw.githubusercontent.com/TheEnbyperor/TheEnbyperor/master/q-memoji.png" alt="" width="200">
-          
+          <img src="../assets/memoji-girl.png" alt="" width="200">
         </section>
         
       </div>
@@ -66,6 +65,13 @@ export default {
   flex-direction: column;
   text-align: center;
 }
+
+.dev img {
+  background-color: #d242d5;
+  background: linear-gradient(170deg, #2e0f2e 1%, #d242d5 80%);
+  border-radius: 100%;
+  box-shadow: 0 0 300px 5px  #d242d5;
+}
 .dev p {
   font-weight: bold;
   color: #d242d5;
@@ -81,8 +87,7 @@ export default {
   left: 0;
   position: absolute;
   display: flex;
-  background-color: #000000;
-
+  background-color: #d242d5;
 }
 .container a, .container p {
   color: #ffffff;
