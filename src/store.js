@@ -49,6 +49,7 @@ export default new Vuex.Store({
         router.push('/about')
       } else {
         console.log('JÁ REGISTRADO')
+        router.push('/about')
       }
     },
     logout({ commit }) {

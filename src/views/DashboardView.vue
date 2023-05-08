@@ -1,52 +1,177 @@
 <template>
-    <div>
-        <div class="top-side">
-            <p>Bem-vindo </p>
-            <!-- <p>leo</p> -->
-            <RouterLink to="/">
-                Logout
-            </RouterLink>
+    <div>  
+      <div class="spiner" v-if="isLoading">
+        <div class="lds-ripple"><div></div><div></div></div>
+        carregando
+      </div>
+
+      
+      <div class="body" :class="{ 'section' : isSection }">
+        <div class="container">
+          <p>Welcome</p>
+          <a href="/" @click="logoutHome">Logout</a>
         </div>
-         <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
+        
+        <section class="dev">
+          <p>Under development</p>
+          <img src="https://forums.macrumors.com/attachments/1570807035128-png.868644/" alt="" width="200">
+          
+        </section>
+        
+      </div>
     </div>
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from 'vue';
+
 export default {
-    setup () {
-        return {}
-    }
+  setup() {
+    let timeoutId;
+    const isLoading = ref(true)
+    const isSection = ref(false)
+
+    onMounted(() => {
+      timeoutId = setTimeout(() => {
+        isLoading.value = false
+        isSection.value = true
+        console.log('teste')
+      }, 4000);
+    });
+
+    onUnmounted(() => {
+      clearTimeout(timeoutId)
+    });
+
+    return {
+      isLoading,
+      isSection,
+      isLoadingLogout: false
+    };
+  },
+  // methods: {
+  //   logoutHome() {
+  //     setTimeout(() => {
+  //       this.isLoadingLogout = true
+  //       console.log('teste')
+  //   }, 1500)
+  //   }
+  // }
 }
 </script>
 
 <style scoped>
+.dev {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.dev p {
+  color: #d242d5;
+  padding: 20px;
+}
+.container {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  background-color: #000000;
+
+}
+.container a, .container p {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0 20px;
+}
+
+div .body {
+  opacity: 0;
+}
+
+div .section {
+  top: 0;
+  left: 0;    
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #212121;
+  color: #ffffff;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+div .spiner {
+  display: flex;
+  flex-direction: column;
+  color: #ffffffa5;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 5px solid #FF0044;
+  
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
 
 div {
     top: 0;
     left: 0;    
     position: absolute;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(22, 22, 22);
-}
-
-.top-side {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 100vw;
-    height: 8%;
-    background-color: red;
-}
-
-.top-side p, .top-side a {
-    padding: 0 30px;
-    text-decoration: none;
-    color: #fff;
+    background-color: #16161676;
 }
 
 </style>

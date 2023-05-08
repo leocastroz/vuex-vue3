@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/field',
       name: 'field',
       component: () => import('../views/FieldView.vue')
+    },
+    {
+      path: '/with-register',
+      name: 'with-register',
+      component: () => import('../views/WithRegister.vue')
     }
   ]
 })
