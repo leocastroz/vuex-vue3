@@ -46,7 +46,7 @@ export default new Vuex.Store({
         const user = await db.users.add({ email, password })
         commit('setCurrentUser', { id: user, email })
         console.log('VOCÊ FOI REGISTRADO')
-        router.push('/about')
+        router.push('/with-register')
       } else {
         console.log('JÁ REGISTRADO')
         router.push('/about')

@@ -2,7 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 import LoginForm from './components/LoginForm.vue'
 import RegisterForm from './components/RegisterForm.vue'
-import DashboardView from './views/DashboardView.vue'
 </script>
 <script>
 export default {

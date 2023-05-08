@@ -14,7 +14,7 @@
         
         <section class="dev">
           <p>Under development</p>
-          <img src="https://forums.macrumors.com/attachments/1570807035128-png.868644/" alt="" width="200">
+          <img src="https://raw.githubusercontent.com/TheEnbyperor/TheEnbyperor/master/q-memoji.png" alt="" width="200">
           
         </section>
         
@@ -67,6 +67,7 @@ export default {
   text-align: center;
 }
 .dev p {
+  font-weight: bold;
   color: #d242d5;
   padding: 20px;
 }
