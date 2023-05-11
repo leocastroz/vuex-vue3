@@ -5,11 +5,20 @@
         carregando
       </div>
 
+      <div class="spiner-logout" v-if="isLoadingLogout">
+        <div class="lds-ripple"><div></div><div></div></div>
+        saindo
+      </div>
       
       <div class="body" :class="{ 'section' : isSection }">
         <div class="container">
           <p>Welcome</p>
-          <a href="/" @click="logoutHome">Logout</a>
+          <span @click="logoutHome">
+            <a>Logout</a>
+            <span class="logout">
+              <img src="../assets/logout.svg" alt="">
+            </span>
+          </span>
         </div>
         
         <section class="dev">
@@ -29,6 +38,7 @@ export default {
     let timeoutId;
     const isLoading = ref(true)
     const isSection = ref(false)
+    const isLoadingLogout = ref(false)
 
     onMounted(() => {
       timeoutId = setTimeout(() => {
@@ -42,20 +52,22 @@ export default {
       clearTimeout(timeoutId)
     });
 
+
+
     return {
       isLoading,
       isSection,
-      isLoadingLogout: false
+      isLoadingLogout,
     };
   },
-  // methods: {
-  //   logoutHome() {
-  //     setTimeout(() => {
-  //       this.isLoadingLogout = true
-  //       console.log('teste')
-  //   }, 1500)
-  //   }
-  // }
+  methods: {
+    logoutHome() {
+      setTimeout(() => {
+        this.isLoadingLogout = true
+        console.log('teste')
+    }, 1500)
+    }
+  }
 }
 </script>
 
@@ -89,6 +101,17 @@ export default {
   display: flex;
   background-color: #d242d5;
 }
+
+.container span {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.container span img {
+  width: 20px;
+  margin-left: -20px;
+}
 .container a, .container p {
   color: #ffffff;
   text-decoration: none;
@@ -113,6 +136,12 @@ div .section {
 }
 
 div .spiner {
+  display: flex;
+  flex-direction: column;
+  color: #ffffffa5;
+}
+
+div .spiner-logot {
   display: flex;
   flex-direction: column;
   color: #ffffffa5;
