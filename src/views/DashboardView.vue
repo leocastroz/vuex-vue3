@@ -4,17 +4,18 @@
         <div class="lds-ripple"><div></div><div></div></div>
         carregando
       </div>
-
-      <div class="spiner-logout" v-if="isLoadingLogout">
-        <div class="lds-ripple"><div></div><div></div></div>
-        saindo
-      </div>
       
       <div class="body" :class="{ 'section' : isSection }">
+
+        <div class="spiner-logout prefect" v-if="isLoadingLogout">
+          <div class="lds-ripple"><div></div><div></div></div>
+          saindo
+        </div>
+
         <div class="container">
-          <p>Welcome</p>
+          <p>🎉 Bem-vindo</p>
           <span @click="logoutHome">
-            <a>Logout</a>
+            <a>sair</a>
             <span class="logout">
               <img src="../assets/logout.svg" alt="">
             </span>
@@ -22,20 +23,39 @@
         </div>
         
         <section class="dev">
-          <p>Under development</p>
-          <img src="../assets/memoji-girl.png" alt="" width="200">
+          <p><span>👻</span> Olá visitante, você está em um portfólio !</p>
+          <p class="biografia">
+            desenvolvido por <span>Leonardo Castro</span>, um projeto
+            com uma finalidade bastante simples. Passar de maneira rápida,
+            simples e clara o meu trabalho, e o que eu posso fazer.
+          </p>
         </section>
-        
+
+        <section class="dev-1">
+          <p class="atention"><span>🚨</span> ATENÇÃO !</p>
+          <p class="message">
+            -> ao se "cadastrar" ou "fazer login" não será guardado estes dados em um "DB"
+            este processo e feito apenas para simular um login e um cadastro. Utilizando
+            a "store" do vue.js para guardar os dados. Óbvio que seu navegador irá guarda 
+            todos os registros que fizer.
+
+            <br>
+            <br>
+            Então fique tranquilo, crie quantos cadastros quiser, e faça login com eles.
+          </p>
+        </section>
+
       </div>
     </div>
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
+import router from '@/router/index.js'
 
 export default {
   setup() {
-    let timeoutId;
+    let timeoutId
     const isLoading = ref(true)
     const isSection = ref(false)
     const isLoadingLogout = ref(false)
@@ -44,8 +64,7 @@ export default {
       timeoutId = setTimeout(() => {
         isLoading.value = false
         isSection.value = true
-        console.log('teste')
-      }, 4000);
+      }, 4000)
     });
 
     onUnmounted(() => {
@@ -62,10 +81,12 @@ export default {
   },
   methods: {
     logoutHome() {
+      console.log('saindo')
+      this.isLoadingLogout = true
       setTimeout(() => {
-        this.isLoadingLogout = true
-        console.log('teste')
-    }, 1500)
+   
+        router.push('/') 
+    }, 3000)
     }
   }
 }
@@ -73,21 +94,63 @@ export default {
 
 <style scoped>
 .dev {
+  top: 80px;
+  position: absolute;
   display: flex;
+  align-items: center;
   flex-direction: column;
   text-align: center;
 }
 
-.dev img {
-  background-color: #d242d5;
-  background: linear-gradient(170deg, #2e0f2e 1%, #d242d5 80%);
-  border-radius: 100%;
-  box-shadow: 0 0 300px 5px  #d242d5;
+.dev-1 {
+  top: 350px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
-.dev p {
+
+.dev-1 .atention {
+  font-size: 18px;
+  color: #FF0044;
   font-weight: bold;
-  color: #d242d5;
+}
+
+.dev-1 .message {
+  max-width: 330px;
+  font-size: 14px;
+  text-align: justify;
+  margin-top: 20px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #b0b0b0;
+}
+
+.dev .biografia {
+  text-align: justify;
+  max-width: 330px;
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #b0b0b0;
+}
+
+.dev .biografia span {
+  color: #ff366c;
+  font-size: 13px;
+}
+
+.dev p {
+  font-weight: 500;
+  color: #fff;
   padding: 20px;
+  font-size: 18px;
+}
+.dev p span {
+  font-size: 30px;
+  margin-right: 5px;
 }
 .container {
   width: 100vw;
@@ -99,13 +162,16 @@ export default {
   left: 0;
   position: absolute;
   display: flex;
-  background-color: #d242d5;
+  background-color: #000000;
+  border-bottom: 1px solid #FF0044;
+
 }
 
 .container span {
   display: flex;
   align-items: center;
   padding: 0 10px;
+  cursor: pointer;
 }
 
 .container span img {
@@ -129,7 +195,8 @@ div .section {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: #212121;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(125deg, #000000 80%, #390815 100%);
   color: #ffffff;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
@@ -141,7 +208,7 @@ div .spiner {
   color: #ffffffa5;
 }
 
-div .spiner-logot {
+div .spiner-logout {
   display: flex;
   flex-direction: column;
   color: #ffffffa5;
@@ -194,6 +261,20 @@ div .spiner-logot {
     height: 72px;
     opacity: 0;
   }
+}
+
+
+.prefect {
+  top: 0;
+  left: 0;    
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #161616e2;
+  z-index: 999;
 }
 
 

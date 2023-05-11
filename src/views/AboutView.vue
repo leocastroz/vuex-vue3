@@ -7,8 +7,8 @@
     <div class="body" :class="{ 'section' : isSection }">
       <img src="https://www.theunbiasedblog.com/wp-content/uploads/2021/07/OutfitSticker2.png" alt="" width="180">
         <div class="centered">
-          <p>! You already own this record</p>
-          <a href="/">Lets'go - Login</a>
+          <p>Você já possui este registro !</p>
+          <a href="/">Vamos lá - Entrar</a>
         </div>
     </div>
   </div>

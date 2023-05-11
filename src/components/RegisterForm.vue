@@ -1,8 +1,9 @@
 <template>
   <form @submit.prevent="register" :class="{ 'loading': isLoading }">
     <MinWallpaper/>
-    <h1>Register here</h1>
-    <p>I already have an account! <span @click="registerOk">  Sign in</span></p>
+    <h1>Registre-se aqui</h1>
+    <p>
+      Eu já tenho uma conta!<span @click="registerOk">  Entrar</span></p>
     <div class="email">
       <span class="user">
         <img src="../assets/person.svg" alt="person_icon">
@@ -13,10 +14,10 @@
       <span class="pass">
         <img src="../assets/visibility.svg" alt="eye_icon">
       </span>
-      <input type="password" name="password" v-model="password" placeholder="password">
+      <input type="password" name="password" v-model="password" placeholder="senha">
     </div>
     <div>
-      <button type="submit" :disabled="!email || !password">Register now
+      <button type="submit" :disabled="!email || !password">Registrar agora
         <span class="arrow">
           <img src="../assets/bolt.svg" alt="">
         </span>
@@ -69,7 +70,7 @@ form h1 {
   color: #9C9C9C;
   font-weight: 400; 
   font-size: 20px;
-  padding: 15px 0 5px 0; 
+  padding: 20px 0 5px 0; 
 }
 
 form div {

@@ -1,6 +1,6 @@
 <template>
     <div class="wr">
-        <h4>Development by</h4>
+        <p>Desenvolvido por:</p>
         <div>
             <div>
                 <img src="../assets/profile.jpg" alt="person" width="60">
@@ -12,9 +12,9 @@
 <style scoped>
 
 
-h4 {
-    font-size: 18px;
-    font-weight: bold;
+p {
+    font-size: 15px;
+    font-weight: 500;
     color: #fff;
     text-align: center;
 }

@@ -7,8 +7,8 @@
     <div class="body" :class="{ 'section' : isSection }">
       <img src="https://pbs.twimg.com/media/Fs-nbpZXsAIexfz.png:small" alt="" width="180">
         <div class="centered">
-          <p>Congratulations, you now have a login</p>
-          <a href="/">Lets'go - Login</a>
+          <p>Parabéns, você conseguiu se registrar !</p>
+          <a href="/">Vamos lá - Entrar</a>
         </div>
     </div>
   </div>
@@ -41,14 +41,6 @@ setup() {
     isLoadingLogout: false
   };
 },
-// methods: {
-//   logoutHome() {
-//     setTimeout(() => {
-//       this.isLoadingLogout = true
-//       console.log('teste')
-//   }, 1500)
-//   }
-// }
 }
 </script>
 

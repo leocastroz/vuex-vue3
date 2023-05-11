@@ -1,7 +1,7 @@
   <template>
     <form @submit.prevent="login" :class="{ 'loading': isLoading }">
       <MinWallpaper/>
-      <h1>Sign In</h1>
+      <h1>Entrar</h1>
       <div class="email">
         <span class="user">
           <img src="../assets/person.svg" alt="">
@@ -12,7 +12,7 @@
         <span class="pass">
           <img src="../assets/visibility.svg" alt="">
         </span>
-        <input type="password" name="password" v-model="password" placeholder="password" required>
+        <input type="password" name="password" v-model="password" placeholder="senha" required>
         <div v-if="userNotFound" class="info" @click="openMinModal">
           <span class="material-symbols-rounded info">
             info
@@ -23,13 +23,13 @@
         </div>
       </div>
       <div>
-        <button type="submit" :disabled="!email || !password">LETS ' GO
+        <button type="submit" :disabled="!email || !password">Entrar
           <span class="arrow">
             <img src="../assets/ssid_chart.svg" alt="">
           </span>
         </button>
       </div>
-      <p>Don't have an account ?<span @click="sendRoute">  register now</span></p>
+      <p>Não tem uma conta? ?<span @click="sendRoute">  registre agora</span></p>
       <DevProfile />
     </form>
   </template>
@@ -102,7 +102,7 @@ form h1 {
   color: #9C9C9C;
   font-weight: 400; 
   font-size: 20px;
-  padding: 15px; 
+  padding: 20px; 
 }
 
 form div {
