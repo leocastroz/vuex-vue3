@@ -36,7 +36,7 @@ export default {
   <header>
     <div class="container">
       <div class="child" :class="{ 'loading': isLoading }">
-        <LoginForm v-if="loginOpen" @close="onClose" @loggedin="kekeu" />
+        <LoginForm v-if="loginOpen" @close="onClose" />
         <RegisterForm v-if="registerClose" @success="onSuccess" />
         <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
