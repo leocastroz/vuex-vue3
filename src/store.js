@@ -5,13 +5,11 @@ import router from '../src/router/index.js'
 export default new Vuex.Store({
   state: {
     currentUser: null,
-    isLoggedIn: false,
     userNotFound: false
   },
   mutations: {
     setCurrentUser(state, user) {
       state.currentUser = user
-      state.isLoggedIn = !!user
     },
     setUserNotFound(state, value) {
       state.userNotFound = value
@@ -26,10 +24,8 @@ export default new Vuex.Store({
       if (user) {
         commit('setUserNotFound', false)
         console.log('LOGADO')
-        console.log('user =>', user)
         if (user !== '') {
           router.push('/dashboard')
-          console.log('COM ALGO')
         } else {
           console.log('SEM ALGO')
         }
