@@ -31,7 +31,9 @@
           </p>
         </section>
 
-        <section class="dev-1">
+        <button @click="showYorMessage">Leia-me</button>
+
+        <section class="dev-1" v-if="showAtention">
           <p class="atention"><span>🚨</span> ATENÇÃO !</p>
           <p class="message">
             -> ao se "cadastrar" ou "fazer login" não será guardado estes dados em um "DB"
@@ -58,6 +60,7 @@ export default {
     let timeoutId
     const isLoading = ref(true)
     const isSection = ref(false)
+    const showAtention = ref(false)
     const isLoadingLogout = ref(false)
 
     onMounted(() => {
@@ -77,6 +80,7 @@ export default {
       isLoading,
       isSection,
       isLoadingLogout,
+      showAtention
     };
   },
   methods: {
@@ -87,6 +91,11 @@ export default {
    
         router.push('/') 
     }, 3000)
+    },
+
+    showYorMessage() {
+      this.showAtention = true
+      console.log('leonardo dev')
     }
   }
 }
